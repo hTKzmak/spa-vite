@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ProductItem from '../ProductItem';
 import style from './ProductList.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { filterProducts, searchProducts } from '../../features/products';
 import PaginationElem from '../PaginationElem';
 
-export default function ProductList({ data, currentPage, itemsPerPage, productsDataLength, paginationArr, previousPage, nextPage, totalPages, goToPage }: any) {
+export default function ProductList({ data, previousPage, nextPage }: any) {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export default function ProductList({ data, currentPage, itemsPerPage, productsD
                     <ProductItem id={elem.id} key={elem.id} name={elem.name} emoji={elem.emoji} createdByUser={elem.createdByUser} favorite={elem.favorite} />
                 ))}
             </div>
-            {/* <PaginationElem currentPage={currentPage} itemsPerPage={itemsPerPage} productsDataLength={productsDataLength} paginationArr={paginationArr} previousPage={previousPage} nextPage={nextPage} totalPages={totalPages} goToPage={goToPage}/> */}
+            <PaginationElem previousPage={previousPage} nextPage={nextPage}/>
         </div>
     )
 }

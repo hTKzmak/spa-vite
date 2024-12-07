@@ -34,9 +34,12 @@ export default function HomePage() {
 
     // перемещаемся на следующую страницу
     function nextPage() {
-        if (paginationArr.length != currentPage) {
-            setCurrentPage(currentPage++)
-            goToPage(currentPage)
+        if ((currentPage < totalPages()) && getVisibleRecipes().length > 0) {
+            setCurrentPage((prev) => {
+                const nextPage = prev + 1;
+                goToPage(nextPage);
+                return nextPage;
+            });
         }
     }
 
@@ -44,7 +47,7 @@ export default function HomePage() {
     function previousPage() {
         if (paginationArr[0] != currentPage) {
             setCurrentPage(currentPage - 1)
-            goToPage(currentPage)
+            goToPage(currentPage - 1)
         }
     }
 
@@ -55,7 +58,7 @@ export default function HomePage() {
 
     // ф-ия для изменения значение curretnPage в виде номера страницы
     function goToPage(pageNumber: number) {
-        currentPage = pageNumber;
+        setCurrentPage(pageNumber);
     }
 
     // отображает данные в зависимости от: startIndex (сколько продуктов должно быть на странице, умножая на текущий номер страницы - 1) 
@@ -69,7 +72,7 @@ export default function HomePage() {
     return (
         <div>
             <Header />
-            <ProductList data={getVisibleRecipes()} currentPage={currentPage} itemsPerPage={itemsPerPage} productsDataLength={productsDataLength} paginationArr={paginationArr} nextPage={nextPage} previousPage={previousPage} totalPages={totalPages} goToPage={goToPage} />
+            <ProductList data={getVisibleRecipes()} nextPage={nextPage} previousPage={previousPage} />
         </div>
     )
 }
