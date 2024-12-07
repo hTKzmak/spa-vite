@@ -15,6 +15,11 @@ export default function HomePage() {
     // текущая страница
     let [currentPage, setCurrentPage] = useState(1);
 
+    // обновление currentPage при изменении productsData
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [productsData]);
+
     // кол-во нужных рецептов
     let itemsPerPage = 6;
 
@@ -30,12 +35,14 @@ export default function HomePage() {
     // добавление страниц в массив paginationArr
     useEffect(() => {
         const newPaginationArr = [];
+        const totalPages = Math.ceil(productsData.length / itemsPerPage);
+    
         for (let i = 1; i <= totalPages; i++) {
             newPaginationArr.push(i);
         }
-        console.log(newPaginationArr)
+    
         setPaginationArr(newPaginationArr);
-    }, [totalPages, productsDataLength])
+    }, [productsData, itemsPerPage]);
 
     // перемещаемся на следующую страницу
     function nextPage() {
