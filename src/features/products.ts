@@ -27,10 +27,11 @@ export const productsSlice = createSlice({
         },
         // удаление продуктов
         removeProduct(state, action) {
-            const choosenProduct = state.data.findIndex(elem => elem.id === action.payload)
+            const choosenProduct = state.staticData.findIndex(elem => elem.id === action.payload)
 
             if (choosenProduct !== -1) {
                 state.data.splice(choosenProduct, 1);
+                state.staticData.splice(choosenProduct, 1);
             }
         },
         // поиск продуктов
