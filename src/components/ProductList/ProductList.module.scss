@@ -1,0 +1,45 @@
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    select {
+        border: 1px solid #d4d4d4;
+        padding: 5px 10px;
+        border-radius: 15px;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .search {
+        background-color: transparent;
+        border: 1px solid #d5d5d5;
+        padding: 10px 15px;
+        border-radius: 15px;
+    }
+
+    button {
+        margin-right: 30px;
+
+        @media screen and (max-width: 655px) {
+            margin: 0;
+        }
+    }
+
+    @media screen and (max-width: 655px) {
+        flex-direction: column-reverse;
+        width: 70vw;
+        margin: 0 auto;
+        min-width: 250px;
+    }
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+
+    margin-top: 40px;
+    margin-bottom: 40px;
+}

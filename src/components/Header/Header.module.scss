@@ -1,0 +1,19 @@
+.header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px;
+
+    z-index: 1000;
+
+    gap: 30px;
+
+    h1 {
+        color: #000000dd;
+        font-size: 23px;
+    }
+
+}

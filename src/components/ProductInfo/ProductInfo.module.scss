@@ -1,0 +1,32 @@
+.infoContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 99vh;
+
+    button{
+        margin-bottom: 15px;
+    }
+
+    .icon{
+        font-size: 100px;
+    }
+
+    ul{
+        margin-top: 30px;
+        list-style-type: none;
+        padding: 0;
+
+        li{
+            font-weight: 400;
+            margin-top: 7px;
+            margin-bottom: 7px;
+
+            span{
+                font-weight: 600;
+            }
+        }
+    }
+}
