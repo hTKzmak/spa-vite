@@ -33,8 +33,9 @@ export default function HomePage() {
         for (let i = 1; i <= totalPages; i++) {
             newPaginationArr.push(i);
         }
+        console.log(newPaginationArr)
         setPaginationArr(newPaginationArr);
-    }, [])
+    }, [totalPages, productsDataLength])
 
     // перемещаемся на следующую страницу
     function nextPage() {

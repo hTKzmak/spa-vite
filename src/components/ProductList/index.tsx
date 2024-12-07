@@ -22,11 +22,20 @@ export default function ProductList({ data, previousPage, nextPage }: any) {
                 <input className={style.search} type="text" placeholder='Find your emoji' onInput={(event: React.ChangeEvent<HTMLInputElement>) => dispatch(searchProducts(event.target.value))} />
             </div>
             <div className={style.list}>
-                {data.map((elem: any) => (
-                    <ProductItem id={elem.id} key={elem.id} name={elem.name} emoji={elem.emoji} createdByUser={elem.createdByUser} favorite={elem.favorite} category={elem.category} />
-                ))}
+                {data.length !== 0 ? (
+                    data.map((elem: any) => (
+                        <ProductItem id={elem.id} key={elem.id} name={elem.name} emoji={elem.emoji} createdByUser={elem.createdByUser} favorite={elem.favorite} category={elem.category} />
+                    ))
+                )
+
+                    :
+
+                    (
+                        <p className={style.noData}>¯\_(ツ)_/¯</p>
+                    )
+                }
             </div>
-            <PaginationElem previousPage={previousPage} nextPage={nextPage}/>
+            <PaginationElem previousPage={previousPage} nextPage={nextPage} />
         </div>
     )
 }
