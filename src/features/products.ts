@@ -107,11 +107,27 @@ export const productsSlice = createSlice({
 
             state.data.unshift(newProduct)
             state.staticData.unshift(newProduct)
+        },
+        changeProduct(state, action) {
+            const productIndex = state.staticData.findIndex(elem => elem.id === action.payload.id)
+
+            if (productIndex !== -1) {
+                // находим продукт в статических данных и меняем значения
+                const product = state.staticData[productIndex];
+                product.name = action.payload.name;
+                product.emoji = action.payload.emoji;
+                product.category = action.payload.category;
+
+                // Обновление текущего списка отображаемых продуктов
+                state.data = state.data.map(item =>
+                    item.id === action.payload.id ? { ...item, name: product.name, emoji: product.emoji, category: product.category } : item
+                );
+            }
         }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { addingData, removeProduct, searchProducts, filterProducts, addingToFavor, createProduct } = productsSlice.actions
+export const { addingData, removeProduct, searchProducts, filterProducts, addingToFavor, createProduct, changeProduct } = productsSlice.actions
 
 export default productsSlice.reducer

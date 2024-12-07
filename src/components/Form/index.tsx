@@ -1,16 +1,25 @@
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { createProduct } from '../../features/products';
+import { changeProduct, createProduct } from '../../features/products';
 import style from './Form.module.scss';
 import { useState } from 'react';
 
-export default function Form() {
+type ChoosenProduct = {
+    id?: number,
+    emoji?: string,
+    name?: string, 
+    category?: string,
+    setChanging: any,
+    type: string
+}
+
+export default function Form({id, emoji, name, category, setChanging, type}: ChoosenProduct) {
 
     // значения данных
     const [values, setValues] = useState({
-        emoji: "🎈",
-        name: "Example",
-        category: "Custom emoji"
+        emoji: !emoji ? "🎈" : emoji,
+        name: !name ? "Example" : name,
+        category: !category ? "Custom emoji" : category
     });
 
     const dispatch = useDispatch();
@@ -31,8 +40,18 @@ export default function Form() {
     function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        dispatch(createProduct(values))
-        navigate('/products')
+        if(type == "create"){
+            dispatch(createProduct(values))
+            navigate('/products')
+        }
+        else{
+            const new_data = {
+                id: id,
+                ...values
+            }
+            dispatch(changeProduct(new_data))
+            setChanging(false)
+        }
     }
 
 
@@ -64,9 +83,9 @@ export default function Form() {
                     onChange={handleInputChange}
                     required
                 />
-                <input type='submit' value="Create" />
+                <input type='submit' value={type == "create" ? 'Create' : 'Change'} />
             </form>
-            <button onClick={() => navigate(-1)}>Go back</button>
+            {type == "create" ? (<button onClick={() => navigate(-1)}>Go back</button>) : <button onClick={() => setChanging(false)}>Cancel</button>}
         </div>
     )
 }

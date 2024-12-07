@@ -3,8 +3,8 @@ import Form from "../components/Form";
 export default function CreateProductPage() {
 
     return (
-        <div>
-            <Form/>
+        <div className="formContent">
+            <Form type="create"/>
         </div>
     )
 }

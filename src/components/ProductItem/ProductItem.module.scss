@@ -1,34 +1,36 @@
-.itemContainer{
+.itemContainer {
     position: relative;
 
     .item {
-    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
         background-color: #e3e3e3;
-    
+
         -webkit-box-shadow: 0px 5px 15px 3px rgba(34, 60, 80, 0.1);
         -moz-box-shadow: 0px 5px 15px 3px rgba(34, 60, 80, 0.1);
         box-shadow: 0px 5px 15px 3px rgba(34, 60, 80, 0.1);
-    
+
         border-radius: 15px;
-    
+
         width: 250px;
-        height: 125px;
-    
+        height: 150px;
+
         padding: 23px;
-    
+
         text-align: center;
 
         cursor: pointer;
-    
+
         span {
             font-size: 50px;
         }
 
-        &:hover{
+        &:hover {
             background-color: #c2c2c2;
         }
-    
-        
+
         .info {
             p {
                 text-overflow: clip;
@@ -36,21 +38,20 @@
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-    
+
                 color: #000;
                 text-decoration: none;
             }
         }
     }
 
-    .options{
+    .options {
         position: absolute;
-        top: 20px;
+        top: 15px;
         right: 20px;
 
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
-
 }

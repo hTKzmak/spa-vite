@@ -1,23 +1,22 @@
 .formContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 99vh;
-
     .form {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 7px;
 
         input[type=text] {
             border: 1px solid rgb(222, 222, 222);
             border-radius: 5px;
             padding: 5px 15px;
         }
+
+        input[type=submit] {
+            padding: 5px;
+        }
     }
 
     button {
-        margin-top: 15px;
+        margin-top: 5px;
+        padding: 5px 10px;
     }
 }

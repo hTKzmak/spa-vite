@@ -23,7 +23,7 @@ export default function ProductList({ data, previousPage, nextPage }: any) {
             </div>
             <div className={style.list}>
                 {data.map((elem: any) => (
-                    <ProductItem id={elem.id} key={elem.id} name={elem.name} emoji={elem.emoji} createdByUser={elem.createdByUser} favorite={elem.favorite} />
+                    <ProductItem id={elem.id} key={elem.id} name={elem.name} emoji={elem.emoji} createdByUser={elem.createdByUser} favorite={elem.favorite} category={elem.category} />
                 ))}
             </div>
             <PaginationElem previousPage={previousPage} nextPage={nextPage}/>
