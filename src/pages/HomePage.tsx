@@ -21,12 +21,16 @@ export default function HomePage() {
     // длина всех данных
     let productsDataLength = productsData.length
 
-    // возращает итоговое кол-во страниц
+    // Итоговое кол-во страниц
     let [paginationArr, setPaginationArr] = useState<number[]>([]);
 
+    // итоговое кол-во страниц
+    let totalPages = Math.ceil(productsDataLength / itemsPerPage);
+
+    // добавление страниц в массив paginationArr
     useEffect(() => {
         const newPaginationArr = [];
-        for (let i = 1; i <= itemsPerPage; i++) {
+        for (let i = 1; i <= totalPages; i++) {
             newPaginationArr.push(i);
         }
         setPaginationArr(newPaginationArr);
@@ -34,7 +38,7 @@ export default function HomePage() {
 
     // перемещаемся на следующую страницу
     function nextPage() {
-        if ((currentPage < totalPages()) && getVisibleRecipes().length > 0) {
+        if ((currentPage < totalPages) && getVisibleRecipes().length > 0) {
             setCurrentPage((prev) => {
                 const nextPage = prev + 1;
                 goToPage(nextPage);
@@ -49,11 +53,6 @@ export default function HomePage() {
             setCurrentPage(currentPage - 1)
             goToPage(currentPage - 1)
         }
-    }
-
-    // функци
-    function totalPages() {
-        return Math.ceil(productsDataLength / itemsPerPage);
     }
 
     // ф-ия для изменения значение curretnPage в виде номера страницы
