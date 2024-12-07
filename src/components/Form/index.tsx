@@ -9,7 +9,7 @@ type ChoosenProduct = {
     emoji?: string,
     name?: string, 
     category?: string,
-    setChanging: any,
+    setChanging?: any,
     type: string
 }
 
